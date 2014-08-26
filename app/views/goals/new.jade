@@ -1,0 +1,27 @@
+extends ../shared/template
+block content
+  h2 Add A Goal
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-xs-5
+          form.form-horizontal(role='form', method='post', action='/goals')
+            .form-group
+                label.col-sm-2.control-label(for='name') Name
+                .col-sm-10
+                  input#name.form-control(name='name', type='text', placeholder='Become a Plumber')
+            .form-group
+                label.col-sm-2.control-label(for='due') Due
+                .col-sm-10
+                  input#due.form-control(name='due', type='date')
+            .form-group
+              label.col-sm-2.control-label(for='tags') Tags
+              .col-sm-10
+                input#tags.form-control(name='tags', type='text', placeholder='job, career')
+            .form-group
+              .col-sm-offset-2.col-sm-10
+                button.btn.btn-default(type='submit') Add Goal
+        .col-xs-7
+
+block scripts
+
