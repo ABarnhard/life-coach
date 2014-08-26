@@ -1,5 +1,7 @@
 'use strict';
 
+var Mongo = require('mongodb');
+
 function Goal(o){
   this.name = o.name;
   this.due = new Date(o.due);
@@ -18,6 +20,17 @@ Goal.create = function(o, cb){
 
 Goal.findAllByUserId = function(id, cb){
   Goal.collection.find({userId:id}).toArray(cb);
+};
+
+Goal.findByIdForUser = function(goalId, userId, cb){
+  goalId = Mongo.ObjectID(goalId);
+  Goal.collection.findOne({_id:goalId}, function(err, goal){
+    if(goal.userId.toString() === userId.toString()){
+      cb(err, goal);
+    }else{
+      cb('ERROR:INVALID USER ID', null);
+    }
+  });
 };
 
 module.exports = Goal;

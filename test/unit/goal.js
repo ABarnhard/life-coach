@@ -48,5 +48,24 @@ describe('Goal', function(){
     });
   });
 
+  describe('.findByIdForUser', function(){
+    it('should return goal (user IDs match)', function(done){
+      var goalId = 'a00000000000000000000002',
+          userId = Mongo.ObjectID('000000000000000000000001');
+      Goal.findByIdForUser(goalId, userId, function(err, goal){
+        expect(goal).to.be.ok;
+        done();
+      });
+    });
+    it('should return null (user IDs don\'t match', function(done){
+      var goalId = 'a00000000000000000000003',
+          userId = Mongo.ObjectID('000000000000000000000001');
+      Goal.findByIdForUser(goalId, userId, function(err, goal){
+        expect(goal).to.be.null;
+        done();
+      });
+    });
+  });
+
 });
 

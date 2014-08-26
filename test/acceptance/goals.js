@@ -70,4 +70,22 @@ describe('goals', function(){
     });
   });
 
+  describe('get /goals/3', function(){
+    it('should show a specific goals page', function(done){
+      request(app).get('/goals/a00000000000000000000002').set('cookie', cookie).end(function(err, res){
+        // console.log(res);
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('marathon');
+        done();
+      });
+    });
+    it('should expect to get a 302 (not logged in users goal)', function(done){
+      request(app).get('/goals/a00000000000000000000003').set('cookie', cookie).end(function(err, res){
+        // console.log(res);
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
+
 });

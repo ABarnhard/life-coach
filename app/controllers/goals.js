@@ -20,3 +20,13 @@ exports.index = function(req, res){
   });
 };
 
+exports.show = function(req, res){
+  Goal.findByIdForUser(req.params.id, res.locals.user._id, function(err, goal){
+    if(goal){
+      res.render('goals/show', {goal:goal, moment:moment});
+    }else{
+      res.redirect('/');
+    }
+  });
+};
+

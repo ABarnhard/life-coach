@@ -1,0 +1,17 @@
+extends ../shared/template
+block content
+  h2= goal.name
+  .panel.panel-default
+    .panel-body
+      table.table
+        thead
+          tr
+            th Due
+            th Tags
+        tbody
+          tr
+            td= moment(goal.due).format('ll')
+            td= goal.tags
+
+block scripts
+

@@ -12,7 +12,7 @@ block content
         tbody
           each goal in goals
             tr
-              td= goal.name
+              td: a(href='/goals/#{goal._id}')= goal.name
               td= moment(goal.due).format('ll')
               td= goal.tags
 
