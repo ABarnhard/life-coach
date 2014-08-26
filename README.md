@@ -1,10 +1,8 @@
-## name of project
+## Life Coach
 ### Code Badges
-build status icon
-coverage status icon
 
 ### About
-write a description about your project
+An app for people trying to get their lives together
 
 ### Models
 ```
@@ -35,7 +33,7 @@ $ npm test
 ```
 
 ### Contributors
-- [Chyld Medford](https://github.com/chyld)
+- [Adam Barnhard](https://github.com/abarnhard)
 
 ### License
 [MIT](LICENSE)
