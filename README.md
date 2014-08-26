@@ -1,30 +1,41 @@
 ## Life Coach
 ### Code Badges
+[![Build Status](https://travis-ci.org/ABarnhard/life-coach.svg)](https://travis-ci.org/ABarnhard/life-coach)
+[![Coverage Status](https://coveralls.io/repos/ABarnhard/life-coach/badge.png)](https://coveralls.io/r/ABarnhard/life-coach)
 
 ### About
 An app for people trying to get their lives together
 
 ### Models
 ```
-Model 1
-prop-a
-prop-b
-.classMethod-c
-#instanceMethod-d
+User
+--------
+_id
+email
+password
+--------
+.register
+.login
 ```
 
 ```
-Model 2
-prop-e
-prop-f
-.classMethod-g
-#instanceMethod-h
+Goal
+--------
+_id
+name
+due
+tags
+userId
+--------
+.create
+.findAllByUserId
 ```
 
 ### Features
-- feature 1
-- feature 2
-- feature 3
+- Sessions
+- OOP
+- Acceptance & Unit testing
+- Chalk
 
 ### Running Tests
 ```bash

@@ -1,0 +1,20 @@
+extends ../shared/template
+block content
+  h2 Your Goals:
+  .panel.panel-default
+    .panel-body
+      table.table
+        thead
+          tr
+            th Name
+            th Due
+            th Tags
+        tbody
+          each goal in goals
+            tr
+              td= goal.name
+              td= moment(goal.due).format('ll')
+              td= goal.tags
+
+block scripts
+
