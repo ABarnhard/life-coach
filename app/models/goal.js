@@ -24,13 +24,7 @@ Goal.findAllByUserId = function(id, cb){
 
 Goal.findByIdForUser = function(goalId, userId, cb){
   goalId = Mongo.ObjectID(goalId);
-  Goal.collection.findOne({_id:goalId}, function(err, goal){
-    if(goal.userId.toString() === userId.toString()){
-      cb(err, goal);
-    }else{
-      cb('ERROR:INVALID USER ID', null);
-    }
-  });
+  Goal.collection.findOne({_id:goalId, userId:userId}, cb);
 };
 
 module.exports = Goal;
