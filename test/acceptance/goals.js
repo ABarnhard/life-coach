@@ -48,4 +48,26 @@ describe('goals', function(){
     });
   });
 
+  describe('post /goals', function(){
+    it('should redirect the page', function(done){
+      request(app).post('/goals').set('cookie', cookie).send('name=Be+a+Plumber&due=2015-02-02&tags=job%2C+career').end(function(err, res){
+        // console.log(res);
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
+
+  describe('get /goals', function(){
+    it('should show the goals page', function(done){
+      request(app).get('/goals').set('cookie', cookie).end(function(err, res){
+        // console.log(res);
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('plumber');
+        expect(res.text).to.include('marathon');
+        done();
+      });
+    });
+  });
+
 });
