@@ -3,6 +3,7 @@
   "name" : "Be a plumber",
   "due" : {"$date":1422856800000},
   "tags" : ["job", "career"],
+  "tasks" : [],
   "userId" : {"$oid":"000000000000000000000001"}
 }
 {
@@ -10,6 +11,7 @@
   "name" : "Run marathon",
   "due" : {"$date":1422856800000},
   "tags" : ["fitness", "health"],
+  "tasks" : [],
   "userId" : {"$oid":"000000000000000000000001"}
 }
 {
@@ -17,6 +19,7 @@
   "name" : "Run marathon",
   "due" : {"$date":1422856800000},
   "tags" : ["fitness", "health"],
+  "tasks" : [],
   "userId" : {"$oid":"000000000000000000000002"}
 }
 

@@ -33,6 +33,7 @@ describe('Goal', function(){
         expect(g.name).to.equal('Be a Plumber');
         expect(g.due).to.be.instanceof(Date);
         expect(g.tags).to.have.length(2);
+        expect(g.tasks).to.have.length(0);
         done();
       });
     });
@@ -57,11 +58,33 @@ describe('Goal', function(){
         done();
       });
     });
-    it('should return null (user IDs don\'t match', function(done){
+    it('should return null (user IDs don\'t match)', function(done){
       var goalId = 'a00000000000000000000003',
           userId = Mongo.ObjectID('000000000000000000000001');
       Goal.findByIdForUser(goalId, userId, function(err, goal){
         expect(goal).to.be.null;
+        done();
+      });
+    });
+  });
+
+  describe('.addTask', function(){
+    it('should add a task to users goal', function(done){
+      var goalId = 'a00000000000000000000002',
+          body = {name:'Buy Coveralls', difficulty:'Hard', description:'Go to store & buy', rank:'4'},
+          userId = Mongo.ObjectID('000000000000000000000001');
+      Goal.addTask(body, goalId, userId, function(err, goal){
+        expect(goal.tasks).to.have.length(1);
+        expect(goal.tasks[0].rank).to.equal(4);
+        done();
+      });
+    });
+    it('should not add a task to non-logged in users goal', function(done){
+      var goalId = 'a00000000000000000000003',
+          body = {name:'Buy Coveralls', difficulty:'Hard', description:'Go to store & buy', rank:'4'},
+          userId = Mongo.ObjectID('000000000000000000000001');
+      Goal.addTask(body, goalId, userId, function(err, goal){
+        expect(goal).to.be.undefined;
         done();
       });
     });

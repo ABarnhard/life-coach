@@ -88,4 +88,14 @@ describe('goals', function(){
     });
   });
 
+  describe('post /goals/3/tasks', function(){
+    it('should create a new task for a specific goal', function(done){
+      request(app).post('/goals/a00000000000000000000002/tasks').set('cookie', cookie).send('name=Get+overalls&description=go+buy+overalls&difficulty=Medium&rank=5').end(function(err, res){
+        // console.log(res);
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
+
 });

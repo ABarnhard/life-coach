@@ -3,15 +3,39 @@ block content
   h2= goal.name
   .panel.panel-default
     .panel-body
-      table.table
-        thead
-          tr
-            th Due
-            th Tags
-        tbody
-          tr
-            td= moment(goal.due).format('ll')
-            td= goal.tags
+      .row
+        .col-xs-12
+          table.table
+            thead
+              tr
+                th Due
+            tbody
+              tr
+                td= moment(goal.due).format('ll')
+      .row
+        .col-xs-12
+          | Tasks will go here
+      .row
+        .col-xs-2
+        .col-xs-8
+          form(role='form', method='post', action='/goals/#{goal._id}/tasks')
+            .form-group
+              label Name
+              input.form-control(name='name', type='text', placeholder='Step 1')
+            .form-group
+              label Description
+              input.form-control(name='description', type='text', placeholder='How to do step 1')
+            .form-group
+              label Difficulty
+              select.form-control(name='difficulty')
+                option Easy
+                option Medium
+                option Hard
+            .form-group
+              label Rank
+              input.form-control(name='rank', type='number')
+            button.btn.btn-primary(type='submit') Submit
+        .col-xs-2
 
 block scripts
 

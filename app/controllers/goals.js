@@ -30,3 +30,9 @@ exports.show = function(req, res){
   });
 };
 
+exports.addTask = function(req, res){
+  Goal.addTask(req.body, req.params.id, res.locals.user._id, function(){
+    res.redirect('/goals/' + req.params.id);
+  });
+};
+
